@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
 
-import { SocialServer } from './setupServer';
-import dbConnection from './setupDatabase';
-import { config } from './config';
+import { SocialServer } from '@root/setupServer';
+import dbConnection from '@root/setupDatabase';
+import { config } from '@root/config';
 
 class Application {
   public initialize(): void {
@@ -15,6 +15,7 @@ class Application {
 
   private loadConfig(): void {
     config.validateConfig();
+    config.cloudinaryConfig();
   }
 }
 

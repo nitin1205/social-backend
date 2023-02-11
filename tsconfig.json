@@ -98,6 +98,19 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true },
+    ],
+    "paths": {
+      "@global/*": ["src/shared/globals/*"],
+      "@service/*": ["src/shared/services/*"],
+      "@socket/*": ["src/shared/sockets/*"],
+      "@worker/*": ["src/shared/workers/*"],
+      "@auth/*": ["src/features/auth/*"],
+      "@user/*": ["src/features/user/*"],
+      "@root/*": ["src/*"]
+    },
   }
 }
