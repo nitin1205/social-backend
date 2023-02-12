@@ -10,6 +10,11 @@ import { BadRequestError } from '@global/helpers/error-handler';
 import { IAuthDocument } from '@auth/interfaces/auth.interface';
 // import { IUserDocument } from '@user/interfaces/user.interface';
 // import { userService } from '@service/db/user.service';
+// import { emailQueue } from '@service/queues/email.queue';
+// import moment from 'moment';
+// import publicIp from 'ip';
+// import { IResetPasswordParams } from '@user/interfaces/user.interface';
+// import { resetPasswordTemplate } from '@service/email/templates/reset-password/reset-password-template';
 
 export class SignIn {
   @joiValidation(loginSchema)
@@ -35,6 +40,16 @@ export class SignIn {
       },
       config.JWT_TOKEN!
     );
+    // const templateParams: IResetPasswordParams = {
+    //   username: existingUser.username,
+    //   email: existingUser.email,
+    //   ipaddress: publicIp.address(),
+    //   date: moment().format('DD/MM/YYYY HH:mm')
+    // };
+    // const template: string = resetPasswordTemplate.passwordResetConfirmationTemplate(templateParams);
+    // emailQueue.addEmailJob('forgotPasswordEmail', { template, receiverEmail: 'vortechcorp@gmail.com', subject: 'Password reset conformation'});
+
+
     req.session = { jwt: userJwt };
     // const userDocument: IUserDocument = {
     //   ...user,
